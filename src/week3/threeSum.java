@@ -8,7 +8,6 @@ public class threeSum {
     public static void main(String[] args) {
         In in = new In("D:\\algs4-data\\1Kints.txt");
         int[] arr = in.readAllInts();
-
         Arrays.sort(arr);
         for (int i = 0; i < arr.length-1; i++) {
             int high = arr.length-1;
