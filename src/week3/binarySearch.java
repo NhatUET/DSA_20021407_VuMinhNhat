@@ -1,4 +1,4 @@
-package w3;
+package week3;
 
 import edu.princeton.cs.algs4.StdIn;
 

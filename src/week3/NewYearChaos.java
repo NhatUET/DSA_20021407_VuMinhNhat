@@ -1,4 +1,4 @@
-package w3;
+package week3;
 
 import java.io.*;
 import java.math.*;

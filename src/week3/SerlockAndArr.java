@@ -1,4 +1,4 @@
-package w3;
+package week3;
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -26,6 +26,7 @@ public class SerlockAndArr {
         return "NO";
     }
 
+   //public static String rbalancedSums(List<Integer> arr) {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
