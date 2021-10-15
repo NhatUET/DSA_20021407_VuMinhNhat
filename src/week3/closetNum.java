@@ -13,10 +13,13 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class closetNum {
+    /*
+          O(nlogn)
+     */
     public static List<Integer> closestNumbers(List<Integer> arr) {
         List<Integer> dif = new ArrayList<>(arr.size());
         int min = Integer.MAX_VALUE;
-        Collections.sort(arr);
+        Collections.sort(arr); //nlogn
         for (int i = 1; i < arr.size(); i++) {
             if (arr.get(i) - arr.get(i - 1) < min) {
                 min = arr.get(i) - arr.get(i - 1);
@@ -30,6 +33,11 @@ public class closetNum {
         }
         return dif;
     }
+
+    /*
+        O(n^2)
+     */
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));

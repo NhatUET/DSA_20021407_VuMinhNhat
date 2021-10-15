@@ -1,4 +1,6 @@
 package week3;
+import edu.princeton.cs.algs4.In;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -12,6 +14,7 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class SerlockAndArr {
+    // O(n)
     public static String balancedSums(List<Integer> arr) {
         int left = 0;
         int sum = 0;
@@ -25,32 +28,35 @@ public class SerlockAndArr {
         }
         return "NO";
     }
+    //O(n^2)
+    public static int SumLeft(List<Integer> arr, int n) {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr.get(i);
+        }
+        return sum;
+    }
 
-   //public static String rbalancedSums(List<Integer> arr) {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-        int T = Integer.parseInt(bufferedReader.readLine().trim());
-
-        IntStream.range(0, T).forEach(TItr -> {
-            try {
-                int n = Integer.parseInt(bufferedReader.readLine().trim());
-
-                List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                        .map(Integer::parseInt)
-                        .collect(toList());
-
-                String result = balancedSums(arr);
-
-                bufferedWriter.write(result);
-                bufferedWriter.newLine();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+    public static String rbalancedSums(List<Integer> arr) {
+        int sumArr = 0;
+        for (int element : arr) sumArr += element;
+        for(int i = 0; i < arr.size(); i++) {
+            int sL = SumLeft(arr,i);
+            if (2 * sL == sumArr - arr.get(i)) {
+                return "YES";
             }
-        });
+        }
+        return "NO";
+    }
 
-        bufferedReader.close();
-        bufferedWriter.close();
+    public static void main(String[] args) throws IOException {
+        List<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        arr.add(3);
+        for (Integer x:arr) System.out.print(x + " ");
+        System.out.println(rbalancedSums(arr));
+        System.out.println(SumLeft(arr,3));
     }
 }

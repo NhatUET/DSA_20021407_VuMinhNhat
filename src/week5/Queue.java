@@ -6,34 +6,34 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Stack;
 
-public class Queue<Item> {
+public class Queue<Item>  {
     private StackSetUpLlist<Item> input = new StackSetUpLlist<>();
     private StackSetUpLlist<Item> output = new StackSetUpLlist<>();
     private int size = 0;
 
 
     public void enqueue(Item item) {
-        while (!input.isEmpty()) {
-            output.push(input.pop());
-        }
         input.push(item);
-        while (!output.isEmpty()) {
-            input.push(output.pop());
-        }
         size++;
     }
 
     public void dequeue() {
-        if (input.isEmpty())
-        {
-            System.out.println("Underflow!!");
-            System.exit(0);
+        if (output.isEmpty()) {
+            while (!input.isEmpty()) {
+                output.push(input.pop());
+            }
         }
-        input.pop();
+        output.pop();
+        size--;
     }
 
     public Item top() {
-        return input.top();
+        if (output.isEmpty()) {
+            while (!input.isEmpty()) {
+                output.push(input.pop());
+            }
+        }
+        return output.top();
     }
     public int size() {
         return this.size;
@@ -45,12 +45,27 @@ public class Queue<Item> {
 
     public static void main(String[] args) {
         Queue<Integer> st = new Queue<Integer>();
+        StdOut.println("before");
         st.enqueue(1);
         st.enqueue(2);
         st.enqueue(3);
+        StdOut.println(st.size());
         while (st.top() != null) {
-            StdOut.println(st.top());
+            StdOut.print(st.top() + " ");
             st.dequeue();
         }
+
+        st.enqueue(1);
+        st.enqueue(2);
+        st.enqueue(3);
+        st.enqueue(4);
+        StdOut.println();
+        StdOut.println("after");
+        StdOut.println(st.size());
+        while (st.top() != null) {
+            StdOut.print(st.top() + " ");
+            st.dequeue();
+        }
+
     }
 }

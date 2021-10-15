@@ -13,6 +13,9 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class NewYearChaos {
+    /*
+        O(n)
+     */
     public static void minimumBribes(List<Integer> q) {
         int count = 0;
         for (int i = q.size() - 1; i >= 0; i--) {

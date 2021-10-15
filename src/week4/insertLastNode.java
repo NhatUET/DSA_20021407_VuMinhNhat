@@ -57,6 +57,5 @@ public class insertLastNode {
                 node.next = newNode;
             }
             return head;
-
         }
 }

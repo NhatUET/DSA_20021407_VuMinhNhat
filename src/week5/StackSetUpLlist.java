@@ -4,36 +4,36 @@ import java.util.Iterator;
 import java.util.List;
 
 public class StackSetUpLlist<Item> implements Iterable<Item> {
-    private Node first = null;
+    private Node<Item> first = null;
     private int size = 0;
-    private class Node {
+    private class Node<Item> {
         Item item;
-        Node next;
+        Node<Item> next;
     }
 
     public Iterator<Item> iterator() {
-        return new ListIterator();
-    }
+        return new Iterator<Item>() {
+            private Node<Item> current = first;
 
-    private class ListIterator implements Iterator<Item> {
-        private Node current = first;
-
-        @Override
-        public boolean hasNext() {
-            return current == null;
-        }
-
-        @Override
-        public Item next() {
-            if (current == null) return null;
-            else {
-                Item item = current.item;
-                current = current.next;
-                return item;
+            @Override
+            public boolean hasNext() {
+                return current != null;
             }
 
-        }
+            @Override
+            public Item next() {
+                if (hasNext()) {
+                    Item item = current.item;
+                    current = current.next;
+                    return item;
+                } else {
+                    return null;
+                }
+            }
+        };
     }
+
+
     public boolean isEmpty() {
         return first == null;
     }
@@ -64,6 +64,30 @@ public class StackSetUpLlist<Item> implements Iterable<Item> {
 
     public int size() {
         return size;
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        for (Item item : this) {
+            s.append(item);
+            s.append(' ');
+        }
+        return s.toString();
+    }
+    public static void main(String[] args) {
+        StackSetUpLlist<String> s = new StackSetUpLlist<>();
+        s.push("A");
+        s.push("B");
+        s.push("C");
+        System.out.println("Stack: " + s);
+
+        s.pop();
+        System.out.println("Stack: " + s);
+        s.pop();
+        System.out.println("Stack: " + s);
+
+        s.push("D");
+        System.out.println("Stack: " + s);
     }
 }
 

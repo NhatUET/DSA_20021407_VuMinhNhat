@@ -14,18 +14,14 @@ import static java.util.stream.Collectors.toList;
 
 public class pair {
     public static int pairs(int k, List<Integer> arr) {
-        // Write your code here
         int count = 0;
-        Set<Integer> res = new HashSet<>();
-        for (int i = 0; i < arr.size(); i++) {
-            res.add(arr.get(i));
-        }
-        for (int i = 0; i < arr.size(); i++) {
-            if (res.contains(arr.get(i) + k) == true) count++;
+        Set<Integer> res = new HashSet<>(arr); // n
+        for (Integer integer : arr) { // n
+            if (res.contains(integer + k)) count++;
         }
         return count;
-
     }
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
