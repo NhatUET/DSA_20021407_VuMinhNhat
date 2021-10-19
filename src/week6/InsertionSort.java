@@ -9,17 +9,18 @@ import edu.princeton.cs.algs4.StdOut;
     best case:
         da sap xep tang dan: chay tu dau den cuoi -> mat N-1 lan -> O(N)
     -> O(N^2)
+    time: 15
  */
 public class InsertionSort {
-    public static boolean smaller(Comparable a, Comparable b) {
-        return a.compareTo(b) > 0;
+    public static boolean smaller(int a, int b) {
+        return a - b > 0;
     }
-    public static void swap(Comparable[] a, int i, int j) {
-        Comparable tmp = a[i];
+    public static void swap(int[] a, int i, int j) {
+        int tmp = a[i];
         a[i] = a[j];
         a[j] = tmp;
     }
-    public static void sort(Comparable[] a) {
+    public static void sort(int[] a) {
         int N = a.length;
         for (int i = 0; i < N; i++) {
             for (int j = i; j > 0; j--) {
@@ -36,7 +37,7 @@ public class InsertionSort {
         In in = new In("D:\\algs4-data\\4Kints.txt"); // tạo luồng đọc từ file
         int[] a = in.readAllInts();  // đọc toàn bộ file vào mảng a
         long start = System.currentTimeMillis();
-        // xử lý dữ liệu trong mảng a
+        sort(a);
         long end = System.currentTimeMillis();  // thời gian chạy bằng end - start
         System.out.print(end - start); // in mảng ra màn hình
     }
