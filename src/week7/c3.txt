@@ -1,0 +1,7 @@
+khi dùng insertion hay selection:
+trong selection sort: lấy min đưa lên đầu. thì ta phải chạy 1 lượt O(N) để tìm min,
+                      sau đó chạy đến phần tử min mmất O(N-1) để xóa. Sau đó ta đưa lên đầu => khá tốn thời gian
+                      trong khi đó dùng mảng ta chỉ cần dùng 1 biến trung gian rồi swap chỉ mất O(1)
+trong insertion sort: tương tự như sx chọn, ta sẽ lấy phần tử đang trỏ tới, rồi đưa ra ngoài xong sau đó ta xét mảng bên
+                      trái xem vị trí đúng của nó ở đâu rồi chèn -> mất O(n) nhưng mà thêm các thao tác xóa node, insert
+                      node.

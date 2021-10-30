@@ -50,7 +50,6 @@ public class PriorityQueue {
         p.insert(3);
         p.insert(4);
         p.insert(5);
-        p.delMax();
-        System.out.println(p.size);
+        System.out.println(p.delMax());
     }
 }
