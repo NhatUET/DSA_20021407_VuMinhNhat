@@ -94,10 +94,10 @@ public class HeapByBinTree {
     }
     public static void main(String[] args) {
         HeapByBinTree h1 = new HeapByBinTree();
-        int[] a = {1,2,3,4,5,6,7,8};
+        int[] a = {10,33,26,14,31,42,44,19,35,27};
         for (int j : a) {
             h1.addNode(j);
         }
-        h1.traversePreOrder(h1.root);
+        h1.traverseLevelOrder(h1.root);
     }
 }

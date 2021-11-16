@@ -71,15 +71,18 @@ public class binaryHeap {
      * @return giá trị lớn nhất đó
      */
     public int delMax() {
-        int max = p[1];
-        exch(1,size--);
-        sink(1);
-        //p[size+1] = 0;
-        return max;
+            int max = p[1];
+            exch(1,size--);
+            sink(1);
+            return max;
     }
 
     public static void main(String[] args) {
-        int[] a = {1,3,5,7,9,8,6,4,2};
+        int[] a = {10,33,26,14,31,42,44,19,35,27};
         binaryHeap h1 = new binaryHeap(1000);
+        for (int j : a) h1.insert(j);
+        for (int i = h1.size/2; i > 0; i--) {
+            h1.sink(i);
+        }
     }
 }

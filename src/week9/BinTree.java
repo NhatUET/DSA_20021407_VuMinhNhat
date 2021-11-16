@@ -63,4 +63,5 @@ public class BinTree<K> {
         System.err.println(b.count());
         System.err.println(e.count());
     }
+
 }

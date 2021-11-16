@@ -1,17 +1,23 @@
 package week8;
 
 public class HeapSort {
-    public static void sink(int[] a, int i, int j) {
-        while (2 * i <= j) {
-            int k = 2 * i;
-            if (k < j && less(a[k], a[k+1])) j++;
-            if (!less(a[i], a[k])) break;
-            exch(a, i, k);
-            i = k;
+    public static int[] a = null;
+    public HeapSort(int s) {
+        a = new int[s];
+    }
+    public static void sink(int i, int j) {
+        if (a.length > 0) {
+            while (2 * i <= j) {
+                int k = 2 * i;
+                if (k < j && less(a[k], a[k+1])) j++;
+                if (!less(a[i], a[k])) break;
+                exch(i, k);
+                i = k;
+            }
         }
     }
 
-    public static void exch(int[] a, int i, int j) {
+    public static void exch( int i, int j) {
         int tmp = a[i];
             a[i] = a[j];
             a[j] = tmp;
@@ -19,10 +25,10 @@ public class HeapSort {
 
     public static void sort(int[] a) {
         int size = a.length;
-        for (int i = size/2; i >= 1; i--) sink(a, 1, size);
+        for (int i = size/2; i >= 1; i--) sink(i, size);
         while (size > 1) {
-            exch(a, 1, size);
-            sink(a, 1, --size);
+            exch(1, size);
+            sink(1, --size);
         }
     }
 
