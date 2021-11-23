@@ -15,6 +15,7 @@ public class Tree {
     public Tree(int data) {
         root = new Node(data, null, null);
     }
+
     static class Node {
         int data;
         boolean visited;
@@ -161,6 +162,8 @@ public class Tree {
 
         System.out.println("\n\n" + "Postorder:");
         postorder(generalTree.root);
+        delete(generalTree.root, 7);
+        System.out.println("LevelOrder Traversal:");
     }
 
     /* b2
@@ -230,7 +233,7 @@ public class Tree {
            newRoot.ht = setHeight(newRoot);
            return newRoot;
        }
-    
+
        private static Node leftRotation(Node root) {
            Node newRoot = root.right;
            root.right = newRoot.left;

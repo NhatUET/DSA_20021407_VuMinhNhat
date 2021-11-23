@@ -11,8 +11,8 @@ public class BalancedBrackets {
             if (pair.isEmpty()) {
                 pair.push(value);
             } else {
-                if (pair.top().equals("(") && value.equals(")")) pair.pop();
-                else if (pair.top().equals("{") && value.equals("}")) pair.pop();
+                if (pair.top().equals("{") && value.equals("}")) pair.pop();
+                else if (pair.top().equals("(") && value.equals(")")) pair.pop();
                 else if (pair.top().equals("[") && value.equals("]")) pair.pop();
                 else pair.push(value);
             }
@@ -27,6 +27,5 @@ public class BalancedBrackets {
         for (String value : s) {
             st.push(value);
         }
-        StdOut.println("size of stack: " + st.size());
     }
 }
